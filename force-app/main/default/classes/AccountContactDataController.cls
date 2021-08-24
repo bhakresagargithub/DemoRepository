@@ -25,5 +25,26 @@ public with sharing class AccountContactDataController {
             throw new AuraHandledException(e.getMessage());
         }
     }
-    
+
+    @AuraEnabled(cacheable=true)
+    public static List<OptionWrapper> getAccountRecordsForCombo(){
+       List<OptionWrapper> accList = new List<OptionWrapper>();
+       for(Account acc :[SELECT Id, Name FROM Account LIMIT 5]){
+        accList.add(new OptionWrapper(acc.Name, acc.Id));
+       }
+       System.debug(accList);
+       return accList;
+    }
+
+    public class OptionWrapper {
+        @AuraEnabled
+        public String label {get; set;}
+        @AuraEnabled
+        public String value {get; set;}
+
+        public OptionWrapper(String label, String value) {
+            this.label = label;
+            this.value = value;
+        }
+    }
 }

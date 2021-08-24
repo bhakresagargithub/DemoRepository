@@ -1,0 +1,14 @@
+<template>
+    <lightning-card title="Account Information - Parent Component">
+        <lightning-combobox
+            name="Account"
+            label="Account"
+            value={accId}
+            placeholder="Select Account"
+            options={options}
+            onchange={handleChange} ></lightning-combobox>
+   
+    <c-child-component-contact acc-id={accId}></c-child-component-contact>
+    
+    </lightning-card>
+</template>
