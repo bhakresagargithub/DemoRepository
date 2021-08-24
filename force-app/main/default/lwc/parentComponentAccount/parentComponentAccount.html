@@ -1,0 +1,11 @@
+<template>
+    <lightning-card title="Account Information - Parent Component">
+        <lightning-datatable class="slds-max-medium-table_stacked" 
+            key-field="Id" 
+            data={accData}
+            columns={columns} onrowselection={handleRowSelection} max-row-selection="1">  </lightning-datatable>
+
+            <c-child-component-contact acc-id={accountId}></c-child-component-contact>
+
+    </lightning-card>
+</template>
